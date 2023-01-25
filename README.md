@@ -1,7 +1,7 @@
-### 1- Créez un fork du projet, clonez le repo localement et créez une nouvelle page contenant votre profil ( ajoutez des links, testimonials.. ).
-### 2- Créez la base de données MongoDB à déployer sur Mongo Atlas, et connectez-là avec votre projet.
-### 3-j'ai fait cette étape de Bonus : L’application contient un bug où la comptabilisation du nombre des clics ne supprime pas les clics dupliqués. Quand un utilisateur clique sur le même lien plusieurs fois,seulement le premier clic doit être comptabilisé.
-### 4- Déployez le projet sur Netlify .
+### 1-Créez un fork du projet, clonez le repo localement et créez une nouvelle page contenant votre profil ( ajoutez des links, testimonials.. ).
+### 2-Créez la base de données MongoDB à déployer sur Mongo Atlas, et connectez-là avec votre projet.
+### 3-J'ai fait cette étape de Bonus : L’application contient un bug où la comptabilisation du nombre des clics ne supprime pas les clics dupliqués. Quand un utilisateur clique sur le même lien plusieurs fois,seulement le premier clic doit être comptabilisé.
+### 4-Déployez le projet sur Netlify .
 
 #### Link : https://bright-gingersnap-6e0517.netlify.app/
 
