@@ -3,6 +3,8 @@
 ### 3-j'ai fait cette étape de Bonus : L’application contient un bug où la comptabilisation du nombre des clics ne supprime pas les clics dupliqués. Quand un utilisateur clique sur le même lien plusieurs fois,seulement le premier clic doit être comptabilisé.
 ### 4- Déployez le projet sur Netlify .
 
+#### Link : https://bright-gingersnap-6e0517.netlify.app/
+
 ![Capture2](https://user-images.githubusercontent.com/114807981/214353969-60299771-8471-4d05-8c99-bbebb7f1b26c.PNG)
 ![Capture1](https://user-images.githubusercontent.com/114807981/214353996-5661e588-aa14-4707-82f8-e4ac702b482d.PNG)
 ![Capture3](https://user-images.githubusercontent.com/114807981/214354064-43fb42c2-cbd6-4acf-8f47-3aca51f7cd43.PNG)
