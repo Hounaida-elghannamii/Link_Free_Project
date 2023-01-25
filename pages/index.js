@@ -15,6 +15,8 @@ import { FaMedal } from "react-icons/fa";
 
 import singleUser from "../config/user.json";
 import { abbreviateNumber } from "../services/utils/abbreviateNumbers";
+import { getTotalsStatic } from "./api/statistics/totalsC";
+import { getTodayStatic } from "./api/statistics/todayC";
 
 export async function getServerSideProps(context) {
   if (singleUser.username) {
@@ -28,20 +30,16 @@ export async function getServerSideProps(context) {
 
   let total = {};
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/totals`
-    );
-    total = await res.json();
+    const res = getTotalsStatic();
+    total = await res;
   } catch (e) {
     console.log("ERROR total stats not found ", e);
   }
 
   let today = {};
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/statistics/today`
-    );
-    today = await res.json();
+    const res = getTodayStatic();
+    today = await res;
   } catch (e) {
     console.log("ERROR today stats not found ", e);
   }

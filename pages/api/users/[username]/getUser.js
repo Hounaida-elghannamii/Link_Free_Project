@@ -7,9 +7,9 @@ import Stats from "../../../../models/Stats";
 import ProfileStats from "../../../../models/ProfileStats";
 import findOneByUsernameFull from "../../../../services/profiles/findOneByUsernameFull";
 
-export default async function handler(req, res) {
+async function handler(username) {
   await connectMongo();
-  const { username } = req.query;
+
   let log;
   log = logger.child({ username: username });
 
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
 
   if (!data.username) {
     logger.error(`failed loading profile username: ${username}`);
-    return res.status(404).json({ error: `${username} not found` });
+    return ""
   }
 
   const date = new Date();
@@ -52,8 +52,8 @@ export default async function handler(req, res) {
   if (getProfile) {
     
     try {
-      // res.setHeader('Set-Cookie', username+'=1; Max-Age=3600');
-      // const cookie = req.cookies[username];
+      // "".setHeader('Set-Cookie', username+'=1; Max-Age=3600');
+      // const cookie = "".cookies[username];
       // logger.error(cookie)
       await Profile.updateOne(
         {
@@ -144,7 +144,7 @@ export default async function handler(req, res) {
   }
 
   if (!data.displayStatsPublic) {
-    return res.status(200).json({ username, ...data });
+    return { username, ...data };
   }
 
   const latestProfile = await Profile.findOne({ username });
@@ -167,6 +167,9 @@ export default async function handler(req, res) {
     }),
   };
 
-  res.status(200).json(profileWithStats);
+  return profileWithStats;
 }
   
+export const getUser = (name)=>{
+    return handler(name);
+}

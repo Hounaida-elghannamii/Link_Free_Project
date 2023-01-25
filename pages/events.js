@@ -5,12 +5,13 @@ import Page from "../components/Page";
 import { EventTabs } from "../components/event/EventTabs";
 import { FaListUl, FaMicrophoneAlt } from "react-icons/fa";
 import { MdOutlineOnlinePrediction, MdOutlinePeople } from "react-icons/md";
+import { getEvents } from "./api/eventsC";
 
 export async function getServerSideProps(context) {
   let events = [];
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/events`);
-    events = await res.json();
+    const res = getEvents();
+    events = await res;
   } catch (e) {
     console.log("ERROR search users", e);
   }

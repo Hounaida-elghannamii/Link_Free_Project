@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { IconContext } from "react-icons";
@@ -16,20 +16,19 @@ import UserMilestones from "../components/user/UserMilestones";
 import UserTestimonials from "../components/user/UserTestimonials";
 import UserEvents from "../components/user/UserEvents";
 import Page from "../components/Page";
+import { getUser } from "./api/users/[username]/getUser";
 
 export async function getServerSideProps(context) {
   const { req } = context;
   const username = context.query.username;
   let log;
   log = logger.child({ username: username, ip: requestIp.getClientIp(req) });
-  log.info("cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc");
+  
   let data = {};
 
   try {
-    const resUser = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/users/${username}`
-    );
-    data = await resUser.json();
+    const resUser = getUser(username);
+    data = await resUser;
     log.info(`data loaded for username: ${username}`);
   } catch (e) {
     log.error(e, `profile loading failed for username: ${username}`);

@@ -5,6 +5,10 @@ import Page from "../components/Page";
 import { useState } from "react";
 import { TbRefresh } from "react-icons/tb";
 import Tag from "../components/Tag";
+import { getPopular } from "./api/discover/popularC";
+import { getRandom } from "./api/discover/randomC";
+import { getTrending } from "./api/discover/trendingC";
+import { getTags } from "./api/discover/tagsC";
 
 export async function getServerSideProps(context) {
   let data = {
@@ -13,37 +17,29 @@ export async function getServerSideProps(context) {
     trending: [],
   };
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/discover/popular`
-    );
-    data.popular = await res.json();
+    const res = getPopular();
+    data.popular = await res;
   } catch (e) {
     console.log("ERROR loading popular profiles", e);
   }
 
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/discover/random`
-    );
-    data.random = await res.json();
+    const res =getRandom();
+    data.random = await res;
   } catch (e) {
     console.log("ERROR loading random profiles", e);
   }
 
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/discover/trending`
-    );
-    data.trending = await res.json();
+    const res = getTrending();
+    data.trending = await res;
   } catch (e) {
     console.log("ERROR loading trending profiles", e);
   }
 
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/api/discover/tags`
-    );
-    data.tags = await res.json();
+    const res = getTags();
+    data.tags = await res;
   } catch (e) {
     console.log("ERROR loading tags", e);
   }

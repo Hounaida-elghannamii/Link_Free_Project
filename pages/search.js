@@ -6,12 +6,13 @@ import { useRouter } from "next/router";
 import UserCard from "../components/user/UserCard";
 import Alert from "../components/Alert";
 import Page from "../components/Page";
+import { getSearch } from "./api/users/searchC";
 
 export async function getServerSideProps(context) {
   let users = [];
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/users`);
-    users = await res.json();
+    const res =getSearch();
+    users = await res;
   } catch (e) {
     console.log("ERROR search users", e);
   }
